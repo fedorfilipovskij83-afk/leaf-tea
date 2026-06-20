@@ -2,7 +2,7 @@ backend:
   name: github
   repo: fedorfilipovskij83-afk/leaf-tea
   branch: main
-  client_id: Ov23li45pTUPuykcXyqx
+  client_id: Ov23li45pTUPuykcXyqx   # ← ТВОЙ CLIENT ID
   auth_scope: repo
 
 media_folder: "images/products"
@@ -29,9 +29,7 @@ collections:
           - { label: "Чёрный чай", value: "black" }
           - { label: "Улун", value: "oolong" }
           - { label: "Пуэр", value: "puer" }
-          - { label: "Белый чай", value: "white" }
           - { label: "Чайная посуда", value: "teaware" }
-          - { label: "Аксессуары", value: "accessories" }
         required: true
 
       - label: "Описание"
@@ -44,11 +42,6 @@ collections:
         widget: "number"
         value_type: "int"
         required: true
-
-      - label: "Вес / Объём"
-        name: "weight"
-        widget: "string"
-        default: "50 г"
 
       - label: "Фотографии"
         name: "images"
@@ -63,24 +56,3 @@ collections:
         name: "published"
         widget: "boolean"
         default: true
-
-  - name: "categories"
-    label: "Категории"
-    folder: "_data/categories"
-    create: true
-    delete: true
-    slug: "{{slug}}"
-    fields:
-      - label: "Название категории"
-        name: "title"
-        widget: "string"
-        required: true
-
-      - label: "Описание"
-        name: "description"
-        widget: "text"
-
-      - label: "Иконка (эмодзи)"
-        name: "icon"
-        widget: "string"
-        default: "🍵"
