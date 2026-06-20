@@ -1,12 +1,11 @@
 backend:
-  name: github
-  repo: fedorfilipovskij83-afk/leaf-tea
+  name: git-gateway
   branch: main
-  client_id: Ov23li45pTUPuykcXyqx   # ← ТВОЙ CLIENT ID
-  auth_scope: repo
 
 media_folder: "images/products"
 public_folder: "/images/products"
+
+site_url: "chipper-genie-e55600.netlify.app"  # ← Твоя новая ссылка
 
 collections:
   - name: "products"
