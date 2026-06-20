@@ -4,24 +4,8 @@
     <meta charset="utf-8">
     <title>Leaf Tea Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <script>
-        // Добавляем кнопку регистрации
-        window.addEventListener('cms-ready', function() {
-            var loginForm = document.querySelector('.decap-cms-login');
-            if (loginForm) {
-                var signUpLink = document.createElement('a');
-                signUpLink.href = '/admin/#/registration';
-                signUpLink.textContent = 'Create account';
-                signUpLink.style.display = 'block';
-                signUpLink.style.marginTop = '10px';
-                signUpLink.style.textAlign = 'center';
-                signUpLink.style.color = '#3b82f6';
-                loginForm.appendChild(signUpLink);
-            }
-        });
-    </script>
 </head>
 <body>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
