@@ -13,7 +13,34 @@
     <div class="logo-corner">
         <img src="logo-corner.png" alt="LeafTea" class="logo-small">
     </div>
+    <!-- Кнопка меню -->
+<div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
 
+<!-- Боковая панель -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <h2>🍵 Каталог</h2>
+        <button class="close-btn" onclick="toggleMenu()">✕</button>
+    </div>
+    <nav class="categories" id="categories-list">
+        <!-- Категории загрузятся автоматически -->
+    </nav>
+</div>
+
+<!-- Затемнение -->
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<!-- Сетка товаров -->
+<div class="products-grid" id="products-grid">
+    <!-- Товары загрузятся автоматически -->
+</div>
+
+<!-- Скрипт -->
+<script src="catalog.js"></script>
     <!-- 2. Главный экран -->
     <!-- Hero с фоновой каруселью -->
 <section class="hero">
