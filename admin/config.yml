@@ -5,7 +5,7 @@ backend:
 media_folder: "images/products"
 public_folder: "/images/products"
 
-site_url: "chipper-genie-e55600.netlify.app"  # ← Твоя новая ссылка
+site_url: "https://leaftea.netlify.app"
 
 collections:
   - name: "products"
@@ -28,7 +28,9 @@ collections:
           - { label: "Чёрный чай", value: "black" }
           - { label: "Улун", value: "oolong" }
           - { label: "Пуэр", value: "puer" }
+          - { label: "Белый чай", value: "white" }
           - { label: "Чайная посуда", value: "teaware" }
+          - { label: "Аксессуары", value: "accessories" }
         required: true
 
       - label: "Описание"
@@ -55,3 +57,26 @@ collections:
         name: "published"
         widget: "boolean"
         default: true
+
+  # ← ← ← ДОБАВЬ ВОТ ЭТО НИЖЕ ← ← ←
+  - name: "categories"
+    label: "Категории"
+    folder: "_data/categories"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Название категории"
+        name: "title"
+        widget: "string"
+        required: true
+
+      - label: "Slug (URL)"
+        name: "slug"
+        widget: "string"
+        required: true
+
+      - label: "Иконка (эмодзи)"
+        name: "icon"
+        widget: "string"
+        default: "🍵"
