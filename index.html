@@ -97,11 +97,47 @@
         .contacts-map {
             width: 100%; height: 100%; min-height: 400px;
             border-radius: 12px; overflow: hidden;
-            border: 2px solid #5c4033; /* Коричневая граница */
+            border: 2px solid #5c4033;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         .contacts-map iframe {
             width: 100% !important; height: 100% !important; border: none; display: block;
+        }
+
+        /* ===== БЕЛЫЙ ТЕКСТ ДЛЯ ЗАГОЛОВКОВ И КОНТАКТОВ ===== */
+        .section-title {
+            color: white !important;
+        }
+        
+        .contacts-info .label {
+            color: white !important;
+            font-weight: 600;
+        }
+        
+        .contacts-info p {
+            color: white !important;
+        }
+        
+        .phone-link {
+            color: white !important;
+        }
+        
+        .phone-link:hover {
+            color: #ddd !important;
+        }
+        
+        .philosophy-text p {
+            color: white !important;
+        }
+        
+        .social-btn {
+            color: white !important;
+            border-color: white !important;
+        }
+        
+        .social-btn:hover {
+            background: white !important;
+            color: #284E3D !important;
         }
     </style>
 </head>
@@ -217,7 +253,6 @@
                  data-price="240 ₽ / 25 г" 
                  data-images='["images/green1.png"]' 
                  onclick="openModal(this)">
-                <!-- Добавил img внутрь -->
                 <img src="images/green1.png" alt="Е-Шен" class="card-bg-img">
                 <div class="card-overlay"></div>
                 <div class="card-content">
@@ -227,14 +262,12 @@
             </div>
 
             <!-- ТЕ ГУАНЬ ИНЬ -->
-            <!-- ВНИМАНИЕ: Проверь, что файл ylun1.png лежит в папке images на GitHub! -->
             <div class="card card-image fade-in delay-1" 
                  data-title="Те Гуань Инь" 
                  data-desc="Полуферментированный чай с гор Фуцзянь." 
                  data-price="290 ₽ / 25 г" 
                  data-images='["images/yluuun.png"]' 
                  onclick="openModal(this)">
-                <!-- Добавил img внутрь -->
                 <img src="images/yluuun.png" alt="Те Гуань Инь" class="card-bg-img">
                 <div class="card-overlay"></div>
                 <div class="card-content">
@@ -250,7 +283,6 @@
                  data-price="200 ₽ / 25 г" 
                  data-images='["images/puer1.png", "images/puer2.png"]' 
                  onclick="openModal(this)">
-                <!-- Для карусели на главной ставим первую картинку -->
                 <img src="images/puer1.png" alt="Пуэр" class="card-bg-img">
                 <div class="card-overlay"></div>
                 <div class="card-content">
@@ -346,22 +378,18 @@
             const track = document.getElementById('carouselTrack');
             track.innerHTML = '';
             
-            // Получаем массив картинок
             const images = JSON.parse(card.dataset.images);
             
-            // Создаем картинки
             images.forEach(src => {
                 const img = document.createElement('img'); 
                 img.src = src; 
                 track.appendChild(img);
             });
             
-            // Обновляем точки и кнопки
             const dots = document.getElementById('carouselDots'); 
             dots.innerHTML = '';
             totalSlides = images.length;
             
-            // Если картинка одна - скрываем управление каруселью
             const prevBtn = document.querySelector('.carousel-btn.prev');
             const nextBtn = document.querySelector('.carousel-btn.next');
             
