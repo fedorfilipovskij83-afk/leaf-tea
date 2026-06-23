@@ -824,3 +824,60 @@ body {
 * {
     font-family: 'Montserrat Alternates', sans-serif !important;
 }
+/* Убираем зеленую полосу и делаем текст видимым */
+.card {
+    border: none !important;
+    border-top: none !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Убираем зеленый overlay */
+.card-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 100%) !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Текст поверх фото */
+.card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px 20px;
+    color: white;
+    z-index: 2;
+    text-align: center;
+}
+
+.card-content h3 {
+    color: white !important;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: 2px;
+}
+
+.card-content p {
+    color: white !important;
+    font-size: 14px;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Картинка на фоне */
+.card-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
