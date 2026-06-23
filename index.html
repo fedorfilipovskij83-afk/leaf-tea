@@ -205,18 +205,20 @@
         <div class="hero-dots" id="heroDots"></div>
     </section>
 
-    <!-- Коллекция -->
+        <!-- Коллекция -->
     <section id="collection" class="section">
         <h2 class="section-title fade-in">НАШИ НОВИНКИ</h2>
         <div class="content-grid">
             
-            <!-- Е-ШЕН: ОДНО ФОТО (убрал карусель) -->
+            <!-- Е-ШЕН -->
             <div class="card card-image fade-in" 
                  data-title="Е-Шен" 
                  data-desc="Свежесть первых почек с высокогорных плантаций Китая." 
                  data-price="240 ₽ / 25 г" 
                  data-images='["images/green1.png"]' 
                  onclick="openModal(this)">
+                <!-- Добавил img внутрь -->
+                <img src="images/green1.png" alt="Е-Шен" class="card-bg-img">
                 <div class="card-overlay"></div>
                 <div class="card-content">
                     <h3>Е-ШЕН</h3>
@@ -224,14 +226,16 @@
                 </div>
             </div>
 
-            <!-- ТЕ ГУАНЬ ИНЬ: ОДНО ФОТО (убрал карусель) -->
-            <!-- Если фото не видно, проверь что файл ylun1.png лежит в папке images -->
+            <!-- ТЕ ГУАНЬ ИНЬ -->
+            <!-- ВНИМАНИЕ: Проверь, что файл ylun1.png лежит в папке images на GitHub! -->
             <div class="card card-image fade-in delay-1" 
-                 data-title="УЛУН" 
+                 data-title="Те Гуань Инь" 
                  data-desc="Полуферментированный чай с гор Фуцзянь." 
                  data-price="290 ₽ / 25 г" 
-                 data-images='["images/ylun1.png"]' 
+                 data-images='["images/yluuun.png"]' 
                  onclick="openModal(this)">
+                <!-- Добавил img внутрь -->
+                <img src="images/yluuun.png" alt="Те Гуань Инь" class="card-bg-img">
                 <div class="card-overlay"></div>
                 <div class="card-content">
                     <h3>Те Гуань Инь</h3>
@@ -239,13 +243,15 @@
                 </div>
             </div>
 
-            <!-- ПУЭР: ДВА ФОТО (карусель осталась) -->
+            <!-- ПУЭР -->
             <div class="card card-image fade-in delay-2" 
                  data-title="ПУЭР" 
                  data-desc="Выдержанный чай из провинции Юньнань." 
                  data-price="200 ₽ / 25 г" 
                  data-images='["images/puer1.png", "images/puer2.png"]' 
                  onclick="openModal(this)">
+                <!-- Для карусели на главной ставим первую картинку -->
+                <img src="images/puer1.png" alt="Пуэр" class="card-bg-img">
                 <div class="card-overlay"></div>
                 <div class="card-content">
                     <h3>ШУ-ПУЭР leaftea</h3>
@@ -255,7 +261,6 @@
 
         </div>
     </section>
-
     <!-- Модальное окно -->
     <div class="modal" id="modal">
         <div class="modal-overlay" onclick="closeModal()"></div>
