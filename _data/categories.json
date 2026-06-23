@@ -1,9 +1,0 @@
-[
-    {"slug": "green", "title": "Зелёный чай", "icon": "🍵"},
-    {"slug": "black", "title": "Чёрный чай", "icon": "☕"},
-    {"slug": "oolong", "title": "Улун", "icon": "🫖"},
-    {"slug": "puer", "title": "Пуэр", "icon": "🍂"},
-    {"slug": "white", "title": "Белый чай", "icon": "🤍"},
-    {"slug": "teaware", "title": "Чайная посуда", "icon": "🫖"},
-    {"slug": "accessories", "title": "Аксессуары", "icon": "🎁"}
-]
