@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>leaftea</title>
-   <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600;700;800&display=swap&subset=cyrillic" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     
@@ -86,6 +86,29 @@
         }
         .menu-item-price small { font-weight: 400; color: #777; font-size: 0.85em; }
 
+        /* Кнопки в бургер-меню */
+        .menu-btn-item {
+            display: block;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            background: white;
+            border: 2px solid #e0dcd3;
+            border-radius: 10px;
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #284E3D;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+        .menu-btn-item:hover {
+            background: #284E3D;
+            color: white;
+            border-color: #284E3D;
+            transform: translateX(5px);
+        }
+
         /* Затемнение фона */
         .overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -140,6 +163,134 @@
             background: white !important;
             color: #284E3D !important;
         }
+
+        /* Стили для модальных окон (О нас, Каталог и т.д.) */
+        .info-modal {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .info-modal.active {
+            display: flex;
+        }
+        .info-modal-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+        }
+        .info-modal-content {
+            position: relative;
+            background: #1a1a1a;
+            border-radius: 15px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 40px;
+            z-index: 1;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .info-modal-content h2 {
+            color: white;
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-size: 28px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .info-modal-content p, 
+        .info-modal-content li {
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 15px;
+            font-family: 'Montserrat Alternates', sans-serif;
+        }
+        .info-modal-content strong {
+            color: white;
+        }
+        .info-modal-back {
+            position: sticky;
+            top: 0;
+            background: #1a1a1a;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 10px 0;
+            font-family: 'Montserrat Alternates', sans-serif;
+            z-index: 10;
+        }
+        .info-modal-back:hover {
+            color: #284E3D;
+        }
+
+        /* Стили для каталога в модальном окне */
+        .catalog-category-title {
+            color: white;
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-size: 18px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            margin-top: 30px; 
+            margin-bottom: 15px;
+            border-bottom: 2px solid #284E3D; 
+            padding-bottom: 8px;
+        }
+        .catalog-item-row {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: baseline;
+            margin-bottom: 12px; 
+            font-size: 14px; 
+            color: #ddd;
+            font-family: 'Montserrat Alternates', sans-serif;
+            padding: 5px 0;
+        }
+        .catalog-item-name { 
+            font-weight: 500; 
+            color: #eee;
+        }
+        .catalog-item-price {
+            color: #284E3D; 
+            font-weight: 600; 
+            white-space: nowrap; 
+            margin-left: 15px;
+            font-size: 14px;
+        }
+        .catalog-item-price small { 
+            font-weight: 400; 
+            color: #888; 
+            font-size: 0.85em; 
+        }
+
+        /* Блоки в модалках */
+        .info-block {
+            background: rgba(40, 78, 61, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 3px solid #284E3D;
+        }
+        .info-block h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        .info-block a {
+            color: #284E3D;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .info-block a:hover {
+            color: #4a8a6a;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -154,69 +305,26 @@
         <span></span><span></span><span></span>
     </div>
 
-    <!-- ШТОРКА МЕНЮ -->
+    <!-- ШТОРКА МЕНЮ (НОВОЕ) -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <h2> Ассортимент</h2>
+            <h2>leaFtea</h2>
             <button class="close-btn" onclick="toggleMenu()">✕</button>
         </div>
         
         <div class="menu-list-container">
-            <div class="menu-category-title">Зелёный чай</div>
-            <div class="menu-item-row"><span class="menu-item-name">Е Шен 2026 г</span><span class="menu-item-price">240 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Лун Цзин 2025 г</span><span class="menu-item-price">320 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Би Ло Чунь 2025 г</span><span class="menu-item-price">340 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Моли Сюэ</span><span class="menu-item-price">240 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Мэй Чжан Чао Ча</span><span class="menu-item-price">240 ₽ <small>(25 г)</small></span></div>
-
-            <div class="menu-category-title">Красный чай</div>
-            <div class="menu-item-row"><span class="menu-item-name">Дянь Хун Мао Фен</span><span class="menu-item-price">250 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Цзинь Цзюй Мэй А</span><span class="menu-item-price">290 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Цзинь Цзюй Мэй АА</span><span class="menu-item-price">360 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Сяо Чжун А</span><span class="menu-item-price">270 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Сяо Чжун АА</span><span class="menu-item-price">340 ₽ <small>(25 г)</small></span></div>
-
-            <div class="menu-category-title">Белый чай</div>
-            <div class="menu-item-row"><span class="menu-item-name">Шоу Мэй 2016 г</span><span class="menu-item-price">290 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Шоу Мэй 2018 г</span><span class="menu-item-price">370 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Мэй Жень Ча 2021 г</span><span class="menu-item-price">390 ₽ <small>(25 г)</small></span></div>
-
-            <div class="menu-category-title">Светлый улун</div>
-            <div class="menu-item-row"><span class="menu-item-name">Те Гуань Инь 2026 г</span><span class="menu-item-price">290 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Габа Лугу</span><span class="menu-item-price">360 ₽ <small>(25 г)</small></span></div>
-
-            <div class="menu-category-title">Темный улун</div>
-            <div class="menu-item-row"><span class="menu-item-name">Да Хун Пао Чжун Хо</span><span class="menu-item-price">310 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Шуй Сянь</span><span class="menu-item-price">360 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Жоу Гуй</span><span class="menu-item-price">380 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Милань Сянь Дань Цун</span><span class="menu-item-price">370 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Хуан Чжи Сян Дань Цун</span><span class="menu-item-price">420 ₽ <small>(25 г)</small></span></div>
-
-            <div class="menu-category-title">Шу Пуэр</div>
-            <div class="menu-item-row"><span class="menu-item-name">Фирменный пуэр Leafty 2018</span><span class="menu-item-price">290 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Русские узоры 2025 г</span><span class="menu-item-price">290 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Пуэр с панданом 2018</span><span class="menu-item-price">290 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Гунтин 2017 г</span><span class="menu-item-price">320 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Чжун Ча 2021 г</span><span class="menu-item-price">420 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Блин от Бадурова 2018</span><span class="menu-item-price">440 ₽ <small>(25 г)</small></span></div>
-
-            <div class="menu-category-title">Шен Пуэр</div>
-            <div class="menu-item-row"><span class="menu-item-name">Фирменный пуэр Leafty 2021</span><span class="menu-item-price">290 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Ба Цу Ча 2014 г</span><span class="menu-item-price">260 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Сигуй 2012 г</span><span class="menu-item-price">290 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Уляншань 2008 г</span><span class="menu-item-price">410 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Шен Гу Шу 2019 г</span><span class="menu-item-price">210 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Габа Шен 2024 г</span><span class="menu-item-price">430 ₽ <small>(25 г)</small></span></div>
-
-            <div class="menu-category-title">Эксклюзивный чай</div>
-            <div class="menu-item-row"><span class="menu-item-name">Бай Мудань 2025 г</span><span class="menu-item-price">750 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Шоу Мэй 2009 г</span><span class="menu-item-price">680 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Жоу Гуй Лянь Хуа Фэн</span><span class="menu-item-price">1600 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Удун Сун Чжень Дань Цун</span><span class="menu-item-price">1650 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Гуй Хуа Сян Дань Цун</span><span class="menu-item-price">1650 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Шу Пуэр 7535 1995 г</span><span class="menu-item-price">750 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Шу Пуэр 7573 1977 г</span><span class="menu-item-price">1300 ₽ <small>(25 г)</small></span></div>
-            <div class="menu-item-row"><span class="menu-item-name">Шен Пуэр Алые Флаги 2002</span><span class="menu-item-price">1050 ₽ <small>(25 г)</small></span></div>
+            <div class="menu-category-title">Магазин</div>
+            <button class="menu-btn-item" onclick="openInfoModal('aboutModal'); toggleMenu();">🍵 О нас</button>
+            <button class="menu-btn-item" onclick="openInfoModal('catalogModal'); toggleMenu();">🌿 Каталог чая</button>
+            
+            <div class="menu-category-title">Заказ</div>
+            <button class="menu-btn-item" onclick="openInfoModal('orderModal'); toggleMenu();">📦 Сделать заказ</button>
+            
+            <div class="menu-category-title">Полезное</div>
+            <button class="menu-btn-item" onclick="openInfoModal('brewingModal'); toggleMenu();">🫖 Как заваривать чай</button>
+            
+            <div class="menu-category-title">Связь</div>
+            <button class="menu-btn-item" onclick="scrollToContacts(); toggleMenu();">📍 Контакты</button>
         </div>
     </div>
 
@@ -242,7 +350,7 @@
         <div class="hero-dots" id="heroDots"></div>
     </section>
 
-        <!-- Коллекция -->
+    <!-- Коллекция -->
     <section id="collection" class="section">
         <h2 class="section-title fade-in">НАШИ НОВИНКИ</h2>
         <div class="content-grid">
@@ -294,7 +402,8 @@
 
         </div>
     </section>
-    <!-- Модальное окно -->
+    
+    <!-- Модальное окно для товаров -->
     <div class="modal" id="modal">
         <div class="modal-overlay" onclick="closeModal()"></div>
         <div class="modal-content">
@@ -307,6 +416,219 @@
             </div>
             <div class="modal-info">
                 <h2 id="modalTitle"></h2><p id="modalDesc"></p><div class="modal-price" id="modalPrice"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== МОДАЛЬНОЕ ОКНО: О НАС ===== -->
+    <div class="info-modal" id="aboutModal">
+        <div class="info-modal-overlay" onclick="closeInfoModal('aboutModal')"></div>
+        <div class="info-modal-content">
+            <button class="info-modal-back" onclick="closeInfoModal('aboutModal')">← Назад</button>
+            <h2>🍵 О магазине leaFtea</h2>
+            <p style="margin-bottom: 20px;">
+                <strong>leaFtea</strong> — это пространство для истинных ценителей чая. 
+                Мы собрали для вас лучшие сорта со всего мира: от классических китайских улунов до редких 
+                выдержанных пуэров.
+            </p>
+            <p style="margin-bottom: 20px;">
+                Каждый сорт в нашей коллекции — это история места, где он был выращен, и мастерство людей, 
+                которые его создавали. Мы работаем только с проверенными поставщиками и лично отбираем каждый чай.
+            </p>
+            <div class="info-block">
+                <h3>Наша философия:</h3>
+                <ul style="padding-left: 20px;">
+                    <li>Только премиальные сорта</li>
+                    <li>Ручной сбор</li>
+                    <li>Традиции чайной культуры</li>
+                    <li>Индивидуальный подход к каждому клиенту</li>
+                </ul>
+            </div>
+            <p>
+                Приходите к нам за чаем, который откроет вам новые вкусы и поможет найти время для себя 
+                в ритме большого города.
+            </p>
+        </div>
+    </div>
+
+    <!-- ===== МОДАЛЬНОЕ ОКНО: КАТАЛОГ ===== -->
+    <div class="info-modal" id="catalogModal">
+        <div class="info-modal-overlay" onclick="closeInfoModal('catalogModal')"></div>
+        <div class="info-modal-content">
+            <button class="info-modal-back" onclick="closeInfoModal('catalogModal')">← Назад</button>
+            <h2>🌿 Каталог чая</h2>
+            
+            <div class="catalog-category-title">Зелёный чай</div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Е Шен 2026 г</span><span class="catalog-item-price">240 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Лун Цзин 2025 г</span><span class="catalog-item-price">320 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Би Ло Чунь 2025 г</span><span class="catalog-item-price">340 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Моли Сюэ</span><span class="catalog-item-price">240 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Мэй Чжан Чао Ча</span><span class="catalog-item-price">240 ₽ <small>(25 г)</small></span></div>
+
+            <div class="catalog-category-title">Красный чай</div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Дянь Хун Мао Фен</span><span class="catalog-item-price">250 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Цзинь Цзюй Мэй А</span><span class="catalog-item-price">290 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Цзинь Цзюй Мэй АА</span><span class="catalog-item-price">360 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Сяо Чжун А</span><span class="catalog-item-price">270 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Сяо Чжун АА</span><span class="catalog-item-price">340 ₽ <small>(25 г)</small></span></div>
+
+            <div class="catalog-category-title">Белый чай</div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Шоу Мэй 2016 г</span><span class="catalog-item-price">290 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Шоу Мэй 2018 г</span><span class="catalog-item-price">370 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Мэй Жень Ча 2021 г</span><span class="catalog-item-price">390 ₽ <small>(25 г)</small></span></div>
+
+            <div class="catalog-category-title">Светлый улун</div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Те Гуань Инь 2026 г</span><span class="catalog-item-price">290 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Габа Лугу</span><span class="catalog-item-price">360 ₽ <small>(25 г)</small></span></div>
+
+            <div class="catalog-category-title">Темный улун</div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Да Хун Пао Чжун Хо</span><span class="catalog-item-price">310 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Шуй Сянь</span><span class="catalog-item-price">360 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Жоу Гуй</span><span class="catalog-item-price">380 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Милань Сянь Дань Цун</span><span class="catalog-item-price">370 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Хуан Чжи Сян Дань Цун</span><span class="catalog-item-price">420 ₽ <small>(25 г)</small></span></div>
+
+            <div class="catalog-category-title">Шу Пуэр</div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Фирменный пуэр Leafty 2018</span><span class="catalog-item-price">290 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Русские узоры 2025 г</span><span class="catalog-item-price">290 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Пуэр с панданом 2018</span><span class="catalog-item-price">290 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Гунтин 2017 г</span><span class="catalog-item-price">320 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Чжун Ча 2021 г</span><span class="catalog-item-price">420 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Блин от Бадурова 2018</span><span class="catalog-item-price">440 ₽ <small>(25 г)</small></span></div>
+
+            <div class="catalog-category-title">Шен Пуэр</div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Фирменный пуэр Leafty 2021</span><span class="catalog-item-price">290 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Ба Цу Ча 2014 г</span><span class="catalog-item-price">260 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Сигуй 2012 г</span><span class="catalog-item-price">290 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Уляншань 2008 г</span><span class="catalog-item-price">410 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Шен Гу Шу 2019 г</span><span class="catalog-item-price">210 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Габа Шен 2024 г</span><span class="catalog-item-price">430 ₽ <small>(25 г)</small></span></div>
+
+            <div class="catalog-category-title">Эксклюзивный чай</div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Бай Мудань 2025 г</span><span class="catalog-item-price">750 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Шоу Мэй 2009 г</span><span class="catalog-item-price">680 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Жоу Гуй Лянь Хуа Фэн</span><span class="catalog-item-price">1600 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Удун Сун Чжень Дань Цун</span><span class="catalog-item-price">1650 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Гуй Хуа Сян Дань Цун</span><span class="catalog-item-price">1650 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Шу Пуэр 7535 1995 г</span><span class="catalog-item-price">750 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Шу Пуэр 7573 1977 г</span><span class="catalog-item-price">1300 ₽ <small>(25 г)</small></span></div>
+            <div class="catalog-item-row"><span class="catalog-item-name">Шен Пуэр Алые Флаги 2002</span><span class="catalog-item-price">1050 ₽ <small>(25 г)</small></span></div>
+        </div>
+    </div>
+
+    <!-- ===== МОДАЛЬНОЕ ОКНО: СДЕЛАТЬ ЗАКАЗ ===== -->
+    <div class="info-modal" id="orderModal">
+        <div class="info-modal-overlay" onclick="closeInfoModal('orderModal')"></div>
+        <div class="info-modal-content">
+            <button class="info-modal-back" onclick="closeInfoModal('orderModal')">← Назад</button>
+            <h2>📦 Сделать заказ</h2>
+            
+            <p style="margin-bottom: 25px; font-size: 16px;">
+                <strong>Как сделать заказ:</strong><br>
+                Напишите нам в мессенджеры или позвоните. Мы поможем подобрать чай и ответим на все вопросы.
+            </p>
+
+            <div class="info-block">
+                <h3>📱 Наши контакты:</h3>
+                <p style="margin-bottom: 15px;">
+                    <strong>Telegram:</strong><br>
+                    <a href="https://t.me/jesusfly" target="_blank">@jesusfly</a>
+                </p>
+                <p style="margin-bottom: 15px;">
+                    <strong>Instagram:</strong><br>
+                    <a href="https://www.instagram.com/leafty_tea?igsh=NnFoODl1dXUyODM=" target="_blank">@leafty_tea</a>
+                </p>
+                <p style="margin-bottom: 15px;">
+                    <strong>Телефон:</strong><br>
+                    <a href="tel:+79801577899" style="font-size: 18px;">+7 (980) 157-78-99</a>
+                </p>
+                <p>
+                    <strong>Адрес:</strong><br>
+                    <span style="color: #aaa;">г. Москва, Пресненская наб., 6, стр. 2 (этаж -1)</span>
+                </p>
+            </div>
+
+            <div class="info-block">
+                <h3>🚚 Доставка:</h3>
+                <ul style="padding-left: 20px;">
+                    <li>Самовывоз из магазина (бесплатно)</li>
+                    <li>Курьерская доставка по Москве</li>
+                    <li>Доставка по России (СДЭК, Почта России)</li>
+                </ul>
+            </div>
+
+            <div class="info-block">
+                <h3>💳 Оплата:</h3>
+                <ul style="padding-left: 20px;">
+                    <li>Наличные при получении</li>
+                    <li>Банковская карта</li>
+                    <li>Перевод на карту</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== МОДАЛЬНОЕ ОКНО: КАК ЗАВАРИВАТЬ ===== -->
+    <div class="info-modal" id="brewingModal">
+        <div class="info-modal-overlay" onclick="closeInfoModal('brewingModal')"></div>
+        <div class="info-modal-content">
+            <button class="info-modal-back" onclick="closeInfoModal('brewingModal')">← Назад</button>
+            <h2>🫖 Как заваривать чай</h2>
+            
+            <div class="info-block">
+                <h3>🍃 Зелёный чай:</h3>
+                <ul style="padding-left: 20px;">
+                    <li>Температура: <strong>75-80°C</strong></li>
+                    <li>Время: <strong>2-3 минуты</strong></li>
+                    <li>Пропорция: <strong>1 ч.л. на 200 мл</strong></li>
+                </ul>
+            </div>
+
+            <div class="info-block">
+                <h3>☕ Красный чай:</h3>
+                <ul style="padding-left: 20px;">
+                    <li>Температура: <strong>90-95°C</strong></li>
+                    <li>Время: <strong>3-5 минут</strong></li>
+                    <li>Пропорция: <strong>1 ч.л. на 200 мл</strong></li>
+                </ul>
+            </div>
+
+            <div class="info-block">
+                <h3>🫖 Улун:</h3>
+                <ul style="padding-left: 20px;">
+                    <li>Температура: <strong>85-90°C</strong></li>
+                    <li>Время: <strong>3-4 минуты</strong></li>
+                    <li>Пропорция: <strong>1 ч.л. на 150 мл</strong></li>
+                </ul>
+            </div>
+
+            <div class="info-block">
+                <h3>🍂 Пуэр:</h3>
+                <ul style="padding-left: 20px;">
+                    <li>Температура: <strong>95-100°C</strong></li>
+                    <li>Время: <strong>30 сек - 1 мин (первая заварка)</strong></li>
+                    <li>Пропорция: <strong>5-7 г на 150 мл</strong></li>
+                    <li style="margin-top: 10px; color: #888;">Можно заваривать многократно до 10 раз</li>
+                </ul>
+            </div>
+
+            <div class="info-block">
+                <h3>🤍 Белый чай:</h3>
+                <ul style="padding-left: 20px;">
+                    <li>Температура: <strong>75-85°C</strong></li>
+                    <li>Время: <strong>4-5 минут</strong></li>
+                    <li>Пропорция: <strong>1 ч.л. на 200 мл</strong></li>
+                </ul>
+            </div>
+
+            <div class="info-block">
+                <h3>💡 Общие советы:</h3>
+                <ul style="padding-left: 20px;">
+                    <li>Используйте мягкую фильтрованную воду</li>
+                    <li>Прогревайте чайник перед завариванием</li>
+                    <li>Не передерживайте чай — он станет горьким</li>
+                    <li>Экспериментируйте с временем и температурой</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -329,12 +651,11 @@
                 <div class="contact-item"><span class="label">Часы работы:</span><p>Пн–Пт: 09:00 – 18:30<br>Сб–Вс: Выходной</p></div>
                 <div class="contact-item"><span class="label">Телефон:</span><a href="tel:+79801577899" class="phone-link">+7 (980) 157-78-99</a></div>
                 <div class="social-links">
-                    
                     <a href="https://www.instagram.com/leafty_tea?igsh=NnFoODl1dXUyODM=" class="social-btn">Instagram</a>
                 </div>
             </div>
             
-            <!-- КАРТА ИСПРАВЛЕННАЯ -->
+            <!-- КАРТА -->
             <div class="contacts-map">
                 <iframe src="https://yandex.ru/map-widget/v1/?ll=37.540245%2C55.748179&mode=search&oid=211509010968&ol=biz&z=15.19" frameborder="0" allowfullscreen="true"></iframe>
             </div>
@@ -361,14 +682,30 @@
             });
         });
 
-        // Меню
+        // Бургер-меню
         function toggleMenu() {
             document.getElementById('sidebar').classList.toggle('active');
             document.getElementById('overlay').classList.toggle('active');
             document.querySelector('.menu-toggle').classList.toggle('active');
         }
 
-        // Модалка
+        // Прокрутка к контактам
+        function scrollToContacts() {
+            document.getElementById('contacts').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ===== НОВЫЕ МОДАЛЬНЫЕ ОКНА =====
+        function openInfoModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeInfoModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Модалка для товаров
         let currentSlide = 0, totalSlides = 0;
         function openModal(card) {
             const modal = document.getElementById('modal');
@@ -437,8 +774,15 @@
             document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i===currentSlide));
         }
 
+        // Закрытие по Escape
         document.addEventListener('keydown', e => {
-            if(e.key==='Escape') closeModal();
+            if(e.key === 'Escape') {
+                closeModal();
+                closeInfoModal('aboutModal');
+                closeInfoModal('catalogModal');
+                closeInfoModal('orderModal');
+                closeInfoModal('brewingModal');
+            }
             if(e.key==='ArrowLeft') prevSlide();
             if(e.key==='ArrowRight') nextSlide();
         });
